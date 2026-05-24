@@ -7,7 +7,7 @@ import EQ from "@/assets/eq.png";
 const cats = [
   { label: "The EQ Audit", img: EQ, to: "/EQIntro" },
 
-  { label: "Spiritual Wellness", img: study, to: "/Spiritual" },
+  { label: "Spiritual Wellness", img: study, to: "/spiritual" },
 
   {
     label: "Heal",
