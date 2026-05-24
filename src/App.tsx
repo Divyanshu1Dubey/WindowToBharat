@@ -9,7 +9,7 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Explore from "./pages/Explore.tsx";
 import Heal from "./pages/Heal.tsx";
-import Spiritual from "./pages/spiritual.tsx";
+import Spiritual from "./pages/Spiritual.tsx";
 import Mindfulness from "./pages/Mindfulness.tsx";
 
 // EQ PAGES
