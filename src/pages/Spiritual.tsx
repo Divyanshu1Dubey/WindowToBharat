@@ -26,7 +26,7 @@ const programs = [
   },
 ];
 
-const Spiritual = () => {
+const spiritual = () => {
   return (
     <div className="bg-[#f3e3cf] text-[#333]">
       {/* HERO SECTION */}
@@ -116,4 +116,4 @@ const Spiritual = () => {
     </div>
   );
 };
-export default Spiritual;
+export default spiritual;

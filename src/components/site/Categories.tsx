@@ -2,9 +2,10 @@ import { Link } from "react-router-dom";
 import explore from "@/assets/cat-explore.jpg";
 import study from "@/assets/mind.webp";
 import heal from "@/assets/cat-heal.jpg";
+import EQ from "@/assets/eq.png";
 
 const cats = [
-  { label: "Explore", img: explore, to: "/explore" },
+  { label: "The EQ Audit", img: EQ, to: "/EQIntro" },
 
   { label: "Spiritual Wellness", img: study, to: "/Spiritual" },
 
@@ -15,6 +16,7 @@ const cats = [
     external: true,
   },
 ];
+
 export const Categories = () => (
   <section className="py-24 md:py-32 bg-background">
     <div className="container mx-auto px-6 text-center">
