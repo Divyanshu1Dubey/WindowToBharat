@@ -1193,4 +1193,118 @@ export const questions = [
       },
     ],
   },
+  {
+    id: 41,
+    dimension: "Resilience & Surrender",
+    subtitle: "How do you meet life when it doesn't meet your expectations?",
+    question: "When things don't go as expected, what unfolds within you?",
+    options: [
+      { text: "I adjust and find my center again", score: 5 },
+      { text: "I take time, but settle", score: 4 },
+      { text: "I feel unsettled for a while", score: 3 },
+      { text: "I resist it internally", score: 2 },
+      { text: "I stay stuck in what should have been", score: 1 },
+    ],
+  },
+
+  {
+    id: 42,
+    dimension: "Resilience & Surrender",
+    subtitle: "How do you meet life when it doesn't meet your expectations?",
+    question: "When life feels uncertain, how do you meet it?",
+    options: [
+      { text: "With openness, even without answers", score: 5 },
+      { text: "With some effort to stay steady", score: 4 },
+      { text: "With unease", score: 3 },
+      { text: "With urgency to resolve", score: 2 },
+      { text: "By avoiding it", score: 1 },
+    ],
+  },
+
+  {
+    id: 43,
+    dimension: "Resilience & Surrender",
+    subtitle: "How do you meet life when it doesn't meet your expectations?",
+    question: "What holds your sense of peace the most?",
+    options: [
+      { text: "Something steady within me", score: 5 },
+      { text: "Mostly inner, somewhat outer", score: 4 },
+      { text: "Both equally", score: 3 },
+      { text: "Mostly external", score: 2 },
+      { text: "Almost entirely external", score: 1 },
+    ],
+  },
+
+  {
+    id: 44,
+    dimension: "Resilience & Surrender",
+    subtitle: "How do you meet life when it doesn't meet your expectations?",
+    question: "Letting go... what does that feel like for you?",
+    options: [
+      {
+        text: "A conscious release, even when it's not easy",
+        score: 5,
+      },
+      { text: "A gradual process", score: 4 },
+      { text: "It depends", score: 3 },
+      { text: "It feels difficult", score: 2 },
+      { text: "I tend to hold on", score: 1 },
+    ],
+  },
+
+  {
+    id: 45,
+    dimension: "Resilience & Surrender",
+    subtitle: "How do you meet life when it doesn't meet your expectations?",
+    question: "When things feel uncertain, what happens in your inner space?",
+    options: [
+      { text: "I allow it and stay present", score: 5 },
+      { text: "I hold some steadiness", score: 4 },
+      { text: "I feel uneasy", score: 3 },
+      { text: "I feel restless", score: 2 },
+      { text: "I feel overwhelmed", score: 1 },
+    ],
+  },
+
+  {
+    id: 46,
+    dimension: "Resilience & Surrender",
+    subtitle: "How do you meet life when it doesn't meet your expectations?",
+    question: "When something doesn't resolve quickly, how do you respond?",
+    options: [
+      { text: "I allow time to unfold", score: 5 },
+      { text: "I stay patient with some effort", score: 4 },
+      { text: "I feel slightly anxious", score: 3 },
+      { text: "I try to control the outcome", score: 2 },
+      { text: "I feel stuck", score: 1 },
+    ],
+  },
+
+  {
+    id: 47,
+    dimension: "Resilience & Surrender",
+    subtitle: "How do you meet life when it doesn't meet your expectations?",
+    question: "How often do you return to a sense of calm after disruption?",
+    options: [
+      { text: "Quite naturally", score: 5 },
+      { text: "With some time", score: 4 },
+      { text: "Eventually", score: 3 },
+      { text: "With difficulty", score: 2 },
+      { text: "Rarely", score: 1 },
+    ],
+  },
+
+  {
+    id: 48,
+    dimension: "Resilience & Surrender",
+    subtitle: "How do you meet life when it doesn't meet your expectations?",
+    question: "When life feels out of your control, what do you lean on?",
+    options: [
+      { text: "An inner sense of steadiness", score: 5 },
+      { text: "Reflection and patience", score: 4 },
+      { text: "External reassurance", score: 3 },
+      { text: "Action and control", score: 2 },
+      { text: "Avoidance", score: 1 },
+    ],
+  },
 ];
