@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 const links = [
-  { label: "Home", href: "#home" },
+  { label: "Home", href: "/" },
   { label: "Programs", href: "#programs" },
   { label: "Blog", href: "#blog" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const Navbar = () => {
@@ -16,9 +17,14 @@ export const Navbar = () => {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
+
     onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
@@ -26,46 +32,54 @@ export const Navbar = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         scrolled
-          ? "bg-background/85 backdrop-blur-md shadow-card text-foreground"
-          : "bg-transparent text-background"
+          ? "bg-white/95 backdrop-blur shadow-sm text-black"
+          : "bg-transparent text-white",
       )}
     >
-      <nav className="container mx-auto flex h-16 md:h-20 items-center justify-between px-6">
-        <a href="#home" className="font-serif text-xl md:text-2xl tracking-wide">
-          Window to <span className="text-primary">Bharat</span>
-        </a>
+      <nav className="container mx-auto flex h-16 items-center justify-between px-6">
+        <Link to="/" className="font-serif text-xl md:text-2xl">
+          Window to <span className="text-orange-500">Bharat</span>
+        </Link>
 
-        <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
+        {/* Desktop */}
+
+        <ul className="hidden md:flex gap-8">
           {links.map((l) => (
-            <li key={l.href}>
-              <a href={l.href} className="nav-link">
-                {l.label}
-              </a>
+            <li key={l.label}>
+              {l.href.startsWith("#") ? (
+                <a href={l.href} className="hover:text-orange-500">
+                  {l.label}
+                </a>
+              ) : (
+                <Link to={l.href} className="hover:text-orange-500">
+                  {l.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
 
-        <button
-          aria-label="Toggle menu"
-          className="md:hidden p-2"
-          onClick={() => setOpen((v) => !v)}
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        {/* Mobile */}
+
+        <button onClick={() => setOpen(!open)} className="md:hidden">
+          {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </nav>
 
       {open && (
-        <div className="md:hidden bg-background text-foreground border-t border-border">
-          <ul className="container mx-auto px-6 py-4 flex flex-col gap-3">
+        <div className="md:hidden bg-white">
+          <ul className="p-6 space-y-4">
             {links.map((l) => (
-              <li key={l.href}>
-                <a
-                  href={l.href}
-                  className="block py-2 text-base"
-                  onClick={() => setOpen(false)}
-                >
-                  {l.label}
-                </a>
+              <li key={l.label}>
+                {l.href.startsWith("#") ? (
+                  <a href={l.href} onClick={() => setOpen(false)}>
+                    {l.label}
+                  </a>
+                ) : (
+                  <Link to={l.href} onClick={() => setOpen(false)}>
+                    {l.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>

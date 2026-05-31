@@ -18,6 +18,9 @@ import EQIntro from "./pages/EQIntro";
 import UserDetails from "./pages/UserDetails";
 import Assessment from "./pages/Assessment";
 import Result from "./pages/Result";
+import About from "./pages/About.tsx";
+
+import Contact from "./pages/Contact.tsx";
 
 const queryClient = new QueryClient();
 
@@ -50,6 +53,9 @@ const App = () => (
           <Route path="/assessment" element={<Assessment />} />
 
           <Route path="/result" element={<Result />} />
+
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/About" element={<About />} />
 
           {/* NOT FOUND */}
 
