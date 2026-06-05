@@ -457,96 +457,98 @@ const Result = () => {
         </div>
 
         {/* Google Sheets Sync Settings Panel */}
-        <div
-          style={{
-            background: "rgba(255, 255, 255, 0.6)",
-            backdropFilter: "blur(10px)",
-            borderRadius: "24px",
-            padding: "24px",
-            border: "1px solid rgba(213, 184, 156, 0.2)",
-            display: "flex",
-            flexDirection: "column",
-            gap: "12px",
-            marginTop: "10px"
-          }}
-        >
-          <div 
-            onClick={() => setShowSettings(!showSettings)}
-            style={{ 
-              display: "flex", 
-              justifyContent: "space-between", 
-              alignItems: "center", 
-              cursor: "pointer",
-              userSelect: "none"
+        {import.meta.env.DEV && (
+          <div
+            style={{
+              background: "rgba(255, 255, 255, 0.6)",
+              backdropFilter: "blur(10px)",
+              borderRadius: "24px",
+              padding: "24px",
+              border: "1px solid rgba(213, 184, 156, 0.2)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "12px",
+              marginTop: "10px"
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-              <Settings className="w-5 h-5 text-[#b77950]" />
-              <span style={{ fontSize: "14px", fontWeight: "600", color: "#204e4a" }}>
-                Developer/Sync Settings
+            <div 
+              onClick={() => setShowSettings(!showSettings)}
+              style={{ 
+                display: "flex", 
+                justifyContent: "space-between", 
+                alignItems: "center", 
+                cursor: "pointer",
+                userSelect: "none"
+              }}
+            >
+              <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <Settings className="w-5 h-5 text-[#b77950]" />
+                <span style={{ fontSize: "14px", fontWeight: "600", color: "#204e4a" }}>
+                  Developer/Sync Settings
+                </span>
+              </div>
+              <span style={{ fontSize: "12px", color: "#b77950", fontWeight: "600" }}>
+                {showSettings ? "Hide Options" : "Configure Google Sheets Sync"}
               </span>
             </div>
-            <span style={{ fontSize: "12px", color: "#b77950", fontWeight: "600" }}>
-              {showSettings ? "Hide Options" : "Configure Google Sheets Sync"}
-            </span>
-          </div>
 
-          {showSettings && (
-            <div style={{ borderTop: "1px solid rgba(213, 184, 156, 0.15)", paddingTop: "16px", display: "flex", flexDirection: "column", gap: "12px" }}>
-              <p style={{ fontSize: "12px", color: "#666", lineHeight: "1.6", margin: 0 }}>
-                To save audits automatically into your own Google Sheet:
-                <br />
-                1. Open Extensions &rarr; Apps Script inside your spreadsheet and paste the code from <code style={{ background: "#eee", padding: "2px 6px", borderRadius: "4px" }}>src/GoogleAppsScript.js</code>.
-                <br />
-                2. Deploy as a Web App (access: "Anyone").
-                <br />
-                3. Paste the Web App URL below:
-              </p>
-              
-              <div style={{ display: "flex", gap: "10px", marginTop: "6px" }}>
-                <input
-                  type="text"
-                  placeholder="https://script.google.com/macros/s/.../exec"
-                  value={sheetUrl}
-                  onChange={(e) => setSheetUrl(e.target.value)}
-                  style={{
-                    flex: 1,
-                    padding: "12px 18px",
-                    borderRadius: "12px",
-                    border: "1px solid rgba(213, 184, 156, 0.4)",
-                    fontSize: "13px",
-                    outline: "none",
-                    color: "#333"
-                  }}
-                />
+            {showSettings && (
+              <div style={{ borderTop: "1px solid rgba(213, 184, 156, 0.15)", paddingTop: "16px", display: "flex", flexDirection: "column", gap: "12px" }}>
+                <p style={{ fontSize: "12px", color: "#666", lineHeight: "1.6", margin: 0 }}>
+                  To save audits automatically into your own Google Sheet:
+                  <br />
+                  1. Open Extensions &rarr; Apps Script inside your spreadsheet and paste the code from <code style={{ background: "#eee", padding: "2px 6px", borderRadius: "4px" }}>src/GoogleAppsScript.js</code>.
+                  <br />
+                  2. Deploy as a Web App (access: "Anyone").
+                  <br />
+                  3. Paste the Web App URL below:
+                </p>
                 
-                <button
-                  onClick={handleSaveUrl}
-                  style={{
-                    background: "#204e4a",
-                    color: "white",
-                    padding: "0 24px",
-                    borderRadius: "12px",
-                    border: "none",
-                    fontWeight: "600",
-                    fontSize: "13px",
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "6px"
-                  }}
-                >
-                  {isSaved ? (
-                    <>
-                      <Check className="w-4 h-4" />
-                      Saved
-                    </>
-                  ) : "Save URL"}
-                </button>
+                <div style={{ display: "flex", gap: "10px", marginTop: "6px" }}>
+                  <input
+                    type="text"
+                    placeholder="https://script.google.com/macros/s/.../exec"
+                    value={sheetUrl}
+                    onChange={(e) => setSheetUrl(e.target.value)}
+                    style={{
+                      flex: 1,
+                      padding: "12px 18px",
+                      borderRadius: "12px",
+                      border: "1px solid rgba(213, 184, 156, 0.4)",
+                      fontSize: "13px",
+                      outline: "none",
+                      color: "#333"
+                    }}
+                  />
+                  
+                  <button
+                    onClick={handleSaveUrl}
+                    style={{
+                      background: "#204e4a",
+                      color: "white",
+                      padding: "0 24px",
+                      borderRadius: "12px",
+                      border: "none",
+                      fontWeight: "600",
+                      fontSize: "13px",
+                      cursor: "pointer",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "6px"
+                    }}
+                  >
+                    {isSaved ? (
+                      <>
+                        <Check className="w-4 h-4" />
+                        Saved
+                      </>
+                    ) : "Save URL"}
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
-        </div>
+            )}
+          </div>
+        )}
 
       </div>
     </div>
