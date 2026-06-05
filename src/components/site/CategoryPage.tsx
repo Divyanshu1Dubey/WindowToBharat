@@ -9,9 +9,10 @@ interface Props {
   description: string;
   image: string;
   highlights: string[];
+  children?: React.ReactNode;
 }
 
-export const CategoryPage = ({ eyebrow, title, description, image, highlights }: Props) => (
+export const CategoryPage = ({ eyebrow, title, description, image, highlights, children }: Props) => (
   <main className="min-h-screen bg-background">
     <Navbar />
 
@@ -57,15 +58,17 @@ export const CategoryPage = ({ eyebrow, title, description, image, highlights }:
               </li>
             ))}
           </ul>
-          <a
-            href="/#contact"
-            className="mt-8 inline-block w-full text-center px-6 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-wider hover:bg-primary/90 transition-colors"
+          <Link
+            to="/contact"
+            className="mt-8 inline-block w-full text-center px-6 py-3 bg-primary text-primary-foreground text-sm uppercase tracking-wider hover:bg-primary/90 transition-colors animate-pulse"
           >
             Enquire Now
-          </a>
+          </Link>
         </aside>
       </div>
     </section>
+
+    {children}
 
     <Footer />
   </main>

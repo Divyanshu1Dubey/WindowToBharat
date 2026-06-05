@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
@@ -21,6 +22,25 @@ import Result from "./pages/Result";
 import About from "./pages/About.tsx";
 
 import Contact from "./pages/Contact.tsx";
+import { Preloader } from "@/components/site/Preloader";
+
+const ScrollToHash = () => {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const id = hash.replace("#", "");
+      setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    }
+  }, [hash]);
+
+  return null;
+};
 
 const queryClient = new QueryClient();
 
@@ -29,8 +49,10 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <Preloader />
 
       <BrowserRouter>
+        <ScrollToHash />
         <Routes>
           {/* EXISTING ROUTES */}
 

@@ -1,8 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
+import { Navbar } from "@/components/site/Navbar";
+import { Footer } from "@/components/site/Footer";
 
 const Contact = () => {
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const scriptUrl = localStorage.getItem("eq-sheet-url") || "https://script.google.com/macros/s/AKfycbwEuXD1MiMx_bruXd98V8nMkFEWlSluWXt7CchGooMCXhePEjo57KdOAq03TwN6x7TKUA/exec";
+      await fetch(scriptUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          type: "contact",
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        }),
+      });
+      toast.success("Thank you! Your message has been sent successfully.");
+      setForm({ name: "", email: "", message: "" });
+    } catch (error) {
+      console.error("Failed to submit contact form:", error);
+      toast.error("Failed to send message. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <div className="bg-white min-h-screen">
+    <main className="min-h-screen bg-background pt-16">
+      <Navbar />
+      <div className="bg-white min-h-screen">
       {/* HERO */}
 
       <section className="bg-[#faf7f3] py-28 text-center">
@@ -44,6 +86,14 @@ const Contact = () => {
               </div>
 
               <div>
+                <h3 className="text-orange-500 text-xl mb-3">Email</h3>
+
+                <a href="mailto:web.windowtobharat@gmail.com" className="text-gray-600 hover:text-orange-500 transition-colors">
+                  web.windowtobharat@gmail.com
+                </a>
+              </div>
+
+              <div>
                 <h3 className="text-orange-500 text-xl mb-3">Organization</h3>
 
                 <p className="text-gray-600">
@@ -73,32 +123,48 @@ const Contact = () => {
         <div className="border rounded-2xl p-10 shadow-sm">
           <h2 className="text-4xl font-serif mb-10">Send Message</h2>
 
-          <form className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6">
             <input
               type="text"
               placeholder="Your Name"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="w-full p-4 border rounded-xl bg-[#fafafa]"
+              disabled={loading}
             />
 
             <input
               type="email"
               placeholder="Your Email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="w-full p-4 border rounded-xl bg-[#fafafa]"
+              disabled={loading}
             />
 
             <textarea
               rows={6}
               placeholder="Message"
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
               className="w-full p-4 border rounded-xl bg-[#fafafa]"
+              disabled={loading}
             />
 
-            <button className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-xl">
-              Send Message
+            <button
+              type="submit"
+              disabled={loading}
+              className="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-xl flex items-center gap-2"
+            >
+              {loading && <Loader2 className="w-4 h-4 animate-spin" />}
+              {loading ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>
       </section>
-    </div>
+      </div>
+      <Footer />
+    </main>
   );
 };
 

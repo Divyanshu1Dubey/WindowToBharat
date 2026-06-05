@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
 
 import hero from "@/assets/images/hero.jpg";
 import about from "@/assets/images/about.jpg";
@@ -13,6 +15,41 @@ import gallery3 from "@/assets/images/gallery3.jpg";
 import gallery4 from "@/assets/images/gallery4.jpg";
 
 const Mindfulness = () => {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", country: "", message: "" });
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.email.trim() || !form.phone.trim() || !form.country.trim()) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const scriptUrl = localStorage.getItem("eq-sheet-url") || "https://script.google.com/macros/s/AKfycbwEuXD1MiMx_bruXd98V8nMkFEWlSluWXt7CchGooMCXhePEjo57KdOAq03TwN6x7TKUA/exec";
+      await fetch(scriptUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "registration",
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          country: form.country,
+          message: form.message
+        })
+      });
+      toast.success("Registration request sent! We will contact you soon.");
+      setForm({ name: "", email: "", phone: "", country: "", message: "" });
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to submit registration. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="bg-[#f3e3cf] text-[#333] min-h-screen">
       <div className="max-w-6xl mx-auto p-5">
@@ -320,42 +357,59 @@ const Mindfulness = () => {
             Register Now
           </h2>
 
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="text"
               placeholder="Full Name"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="w-full p-3 rounded-lg border"
+              disabled={loading}
             />
 
             <input
               type="email"
               placeholder="Email"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="w-full p-3 rounded-lg border"
+              disabled={loading}
             />
 
             <input
               type="tel"
               placeholder="Phone"
+              value={form.phone}
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
               className="w-full p-3 rounded-lg border"
+              disabled={loading}
             />
 
             <input
               type="text"
               placeholder="Country"
+              value={form.country}
+              onChange={(e) => setForm({ ...form, country: e.target.value })}
               className="w-full p-3 rounded-lg border"
+              disabled={loading}
             />
 
             <textarea
               placeholder="Message"
               rows={5}
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
               className="w-full p-3 rounded-lg border"
+              disabled={loading}
             />
 
             <button
               type="submit"
-              className="bg-[#2f6f66] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#c0572d] duration-300"
+              disabled={loading}
+              className="bg-[#2f6f66] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#c0572d] duration-300 flex items-center gap-2"
             >
-              Submit Booking
+              {loading && <Loader2 className="w-4 h-4 animate-spin" />}
+              {loading ? "Submitting..." : "Submit Booking"}
             </button>
           </form>
         </section>

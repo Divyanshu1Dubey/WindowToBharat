@@ -15,9 +15,13 @@ export const Footer = () => (
   <footer id="contact" className="bg-foreground text-background">
     <div className="container mx-auto px-6 py-16 grid gap-12 md:grid-cols-4">
       <div className="md:col-span-2">
-        <p className="font-serif text-2xl">
-          Window to <span className="text-gold">Bharat</span>
-        </p>
+        <div className="inline-block bg-white rounded-xl px-4 py-1.5 border border-orange-500/10 mb-4">
+          <img 
+            src="/Window_To_Bharat - Copy.png" 
+            alt="Window to Bharat Logo" 
+            className="h-10 w-auto object-contain" 
+          />
+        </div>
         <p className="mt-4 text-background/70 max-w-sm leading-relaxed text-sm">
           Cultural travel programs designed with care, walked with locals,
           remembered for a lifetime.

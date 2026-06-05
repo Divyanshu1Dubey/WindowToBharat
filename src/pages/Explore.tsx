@@ -1,4 +1,5 @@
 import { CategoryPage } from "@/components/site/CategoryPage";
+import { Programs } from "@/components/site/Programs";
 import img from "@/assets/cat-explore.jpg";
 
 const Explore = () => (
@@ -13,7 +14,9 @@ const Explore = () => (
       "Houseboat stays on Kerala's backwaters",
       "Small group sizes — never more than 12 travellers",
     ]}
-  />
+  >
+    <Programs />
+  </CategoryPage>
 );
 
 export default Explore;

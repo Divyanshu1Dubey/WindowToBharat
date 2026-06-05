@@ -16,7 +16,8 @@ import {
   Activity,
   Heart,
   BrainCircuit,
-  Sun
+  Sun,
+  Mail
 } from "lucide-react";
 
 interface ResultData {
@@ -298,26 +299,33 @@ const Result = () => {
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(400px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
               gap: "24px"
             }}
           >
-            {/* Reveals Card */}
-            <div style={insightCardStyle}>
-              <h3 style={insightCardHeaderStyle}>What this score reveals</h3>
-              <p style={insightCardBodyStyle}>{profile.reveals}</p>
-            </div>
-
-            {/* Path Forward Card */}
-            <div style={insightCardStyle}>
-              <h3 style={insightCardHeaderStyle}>Your path forward</h3>
-              <p style={insightCardBodyStyle}>{profile.pathForward}</p>
-            </div>
-
-            {/* Why it Matters Card */}
-            <div style={{ ...insightCardStyle, gridColumn: "span 1" }}>
-              <h3 style={insightCardHeaderStyle}>Why this matters now</h3>
-              <p style={insightCardBodyStyle}>{profile.whyMatters}</p>
+            {/* Email Sent Notification Card */}
+            <div 
+              style={{
+                ...insightCardStyle,
+                background: "#faf8f5",
+                border: "1.5px dashed rgba(213, 184, 156, 0.6)",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                justifyContent: "center",
+                textAlign: "center",
+                padding: "40px"
+              }}
+            >
+              <div style={{ background: "#204e4a", padding: "16px", borderRadius: "50%", marginBottom: "20px", display: "inline-flex", justifyContent: "center", alignItems: "center" }}>
+                <Mail className="w-8 h-8 text-white" />
+              </div>
+              <h3 style={{ ...insightCardHeaderStyle, fontSize: "22px", marginBottom: "12px", textAlign: "center" }}>
+                Analysis Sent to Email
+              </h3>
+              <p style={{ ...insightCardBodyStyle, fontSize: "14px", color: "#555", lineHeight: "1.6", maxWidth: "380px" }}>
+                More information has been sent to your mail. Please see the brief description and personalized growth profile there.
+              </p>
             </div>
 
             {/* Mindfulness Retreat Integration Card */}

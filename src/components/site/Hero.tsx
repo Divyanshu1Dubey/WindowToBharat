@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import heroImg from "@/assets/hero-india.jpg";
 
 export const Hero = () => {
@@ -27,12 +28,12 @@ export const Hero = () => {
           to Keralan backwaters. Travel slow, travel deep.
         </p>
         <div className="mt-10">
-          <a
-            href="#programs"
+          <Link
+            to="/explore"
             className="inline-flex items-center justify-center px-8 py-4 bg-primary text-primary-foreground text-sm font-medium tracking-wider uppercase hover:bg-primary/90 shadow-warm transition-all hover:-translate-y-0.5"
           >
             Explore Programs
-          </a>
+          </Link>
         </div>
       </div>
 

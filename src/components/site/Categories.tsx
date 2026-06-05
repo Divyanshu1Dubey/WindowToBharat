@@ -15,10 +15,15 @@ const cats = [
     to: "https://window-to-bharat.vercel.app",
     external: true,
   },
+  {
+    label: "Explore",
+    img: explore,
+    to: "/explore",
+  },
 ];
 
 export const Categories = () => (
-  <section className="py-24 md:py-32 bg-background">
+  <section id="programs" className="py-24 md:py-32 bg-background">
     <div className="container mx-auto px-6 text-center">
       <h2 className="font-serif text-4xl md:text-6xl font-medium text-foreground max-w-3xl mx-auto leading-tight">
         Your extraordinary escape just a click away
@@ -29,7 +34,7 @@ export const Categories = () => (
         travelling. We offer the very best of Bharat.
       </p>
 
-      <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {cats.map((c) =>
           c.external ? (
             <a

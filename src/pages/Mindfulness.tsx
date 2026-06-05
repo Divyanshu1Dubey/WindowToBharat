@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "sonner";
+import { Loader2 } from "lucide-react";
+import { Navbar } from "@/components/site/Navbar";
+import { Footer } from "@/components/site/Footer";
 
 const hero = "https://images.unsplash.com/photo-1506126613408-eca07ce68773";
 
@@ -14,7 +18,7 @@ const gallery3 = "https://images.unsplash.com/photo-1519834785169-98be25ec3f84";
 
 const gallery4 = "https://images.unsplash.com/photo-1470770841072-f978cf4d019e";
 
-const curator = "https://images.unsplash.com/photo-1500648767791-00dcc994a43e";
+const curator = "/WhatsApp Image 2026-06-04 at 2.33.02 PM.jpeg";
 
 const days = [
   {
@@ -49,6 +53,41 @@ const days = [
 ];
 
 const Mindfulness = () => {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", country: "", message: "" });
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.email.trim() || !form.phone.trim() || !form.country.trim()) {
+      toast.error("Please fill in all required fields.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const scriptUrl = localStorage.getItem("eq-sheet-url") || "https://script.google.com/macros/s/AKfycbwEuXD1MiMx_bruXd98V8nMkFEWlSluWXt7CchGooMCXhePEjo57KdOAq03TwN6x7TKUA/exec";
+      await fetch(scriptUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          type: "registration",
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          country: form.country,
+          message: form.message
+        })
+      });
+      toast.success("Registration request sent! We will contact you soon.");
+      setForm({ name: "", email: "", phone: "", country: "", message: "" });
+    } catch (error) {
+      console.error(error);
+      toast.error("Failed to submit registration. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div
       style={{
@@ -57,6 +96,7 @@ const Mindfulness = () => {
       }}
       className="text-[#2d2d2d]"
     >
+      <Navbar />
       {/* HERO SECTION */}
 
       <section className="relative h-screen overflow-hidden">
@@ -320,63 +360,66 @@ const Mindfulness = () => {
             </h2>
           </div>
 
-          <form className="grid md:grid-cols-2 gap-6">
+          <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
             <input
               type="text"
               placeholder="Full Name"
+              value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="bg-white p-5 rounded-2xl outline-none"
+              disabled={loading}
             />
 
             <input
               type="email"
               placeholder="Email Address"
+              value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="bg-white p-5 rounded-2xl outline-none"
+              disabled={loading}
             />
 
             <input
               type="text"
               placeholder="Phone Number"
+              value={form.phone}
+              onChange={(e) => setForm({ ...form, phone: e.target.value })}
               className="bg-white p-5 rounded-2xl outline-none"
+              disabled={loading}
             />
 
             <input
               type="text"
               placeholder="Country"
+              value={form.country}
+              onChange={(e) => setForm({ ...form, country: e.target.value })}
               className="bg-white p-5 rounded-2xl outline-none"
+              disabled={loading}
             />
 
             <textarea
               placeholder="Your Message"
               rows={6}
+              value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
               className="bg-white p-5 rounded-2xl outline-none md:col-span-2"
+              disabled={loading}
             />
 
-            <button className="bg-[#204e4a] text-white py-5 rounded-full text-lg font-semibold hover:scale-[1.02] duration-300 md:col-span-2">
-              Submit Registration
+            <button 
+              type="submit"
+              disabled={loading}
+              className="bg-[#204e4a] text-white py-5 rounded-full text-lg font-semibold hover:scale-[1.02] duration-300 md:col-span-2 flex items-center justify-center gap-2"
+            >
+              {loading && <Loader2 className="w-5 h-5 animate-spin" />}
+              {loading ? "Submitting..." : "Submit Registration"}
             </button>
           </form>
         </div>
       </section>
 
       {/* FOOTER */}
-
-      <footer className="py-20 px-6 border-t border-[#d9c1aa]">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-[#204e4a] mb-6">
-            Window To Bharat
-          </h2>
-
-          <p className="text-lg text-gray-700 mb-3">
-            contact@windowtobharat.com
-          </p>
-
-          <p className="text-lg text-gray-700 mb-3">+91 9990821680</p>
-
-          <p className="text-gray-600 mt-10">
-            Dharamshala • Himachal Pradesh • India
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
