@@ -170,7 +170,7 @@ function sendResultsEmail(data) {
               <tr>
                 <td style="background-color: #204e4a; padding: 40px; text-align: center;">
                   <h1 style="color: #ffffff; margin: 0; font-size: 28px; letter-spacing: 2px; font-weight: normal; font-family: 'Georgia', serif;">WINDOW TO BHARAT</h1>
-                  <p style="color: #d5b89c; margin: 10px 0 0 0; font-size: 12px; letter-spacing: 4px; text-transform: uppercase;">Your Gateway to Study, Explore, Heal & Serve</p>
+                  <p style="color: #d5b89c; margin: 10px 0 0 0; font-size: 12px; letter-spacing: 4px; text-transform: uppercase;">Your Gateway to Explore, Heal, and Mindfulness</p>
                 </td>
               </tr>
               <!-- Body -->
@@ -211,7 +211,11 @@ function sendResultsEmail(data) {
                   
                   <!-- Call to Action -->
                   <div style="text-align: center; margin-top: 40px; border-top: 1px solid #eae2d5; padding-top: 30px;">
-                    <p style="font-size: 15px; color: #555555; margin-bottom: 20px; line-height: 1.6;">Want to deepen these emotional intelligence skills? Join EQ Practitioner <strong>Jestin Anthony</strong> in Dharamshala for our 5-day immersive Zen wellness retreat.</p>
+                    <div style="background-color: #fdfaf6; border: 1.5px dashed #b77950; border-radius: 12px; padding: 24px; margin: 0 0 25px 0; text-align: center;">
+                      <p style="font-size: 16px; color: #204e4a; margin: 0; line-height: 1.6; font-weight: bold; font-family: 'Georgia', serif;">
+                        Want to deepen these emotional intelligence skills? Join EQ Practitioner <span style="background-color: #f7e6d2; color: #204e4a; padding: 2px 8px; border-radius: 4px; font-weight: bold; border: 1px solid #d5b89c;">Jestin Anthony</span> in Dharamshala for our 5-day immersive Zen wellness retreat.
+                      </p>
+                    </div>
                     <a href="https://window-to-bharat.vercel.app/Mindfulness" target="_blank" style="background-color: #204e4a; color: #ffffff; display: inline-block; padding: 16px 30px; text-decoration: none; border-radius: 30px; font-size: 14px; font-weight: bold; letter-spacing: 1px; font-family: 'Arial', sans-serif; box-shadow: 0 4px 10px rgba(32,78,74,0.15);">Explore Retreat Program</a>
                   </div>
                 </td>
@@ -219,7 +223,7 @@ function sendResultsEmail(data) {
               <!-- Footer -->
               <tr>
                 <td style="background-color: #faf7f3; border-top: 1px solid #eae2d5; padding: 30px 40px; text-align: center; color: #888888; font-size: 12px; font-family: 'Arial', sans-serif; line-height: 1.5;">
-                  <p style="margin: 0 0 10px 0;">Noble Citizen Foundation • Delhi, India</p>
+                  <p style="margin: 0 0 10px 0;">Soulful • Delhi, India</p>
                   <p style="margin: 0;">If you have any questions, write to us at <a href="mailto:web.windowtobharat@gmail.com" style="color: #204e4a; text-decoration: none;">web.windowtobharat@gmail.com</a></p>
                 </td>
               </tr>

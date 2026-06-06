@@ -46,8 +46,8 @@ const About = () => {
       <div className="bg-white text-[#222]">
         {/* HERO */}
         <section className="bg-[#faf7f3] py-28 px-6 text-center">
-          <p className="tracking-[6px] text-orange-500 mb-5">
-            AN INITIATIVE OF NOBLE CITIZEN FOUNDATION
+          <p className="tracking-[4px] text-orange-500 mb-5 uppercase font-medium">
+            Your Gateway to Explore, Heal, and Mindfulness
           </p>
 
           <h1 className="text-5xl md:text-7xl font-serif mb-8">

@@ -97,7 +97,7 @@ const Contact = () => {
                 <h3 className="text-orange-500 text-xl mb-3">Organization</h3>
 
                 <p className="text-gray-600">
-                  An initiative of Noble Citizen Foundation
+                  An initiative of Soulful
                 </p>
               </div>
             </div>
