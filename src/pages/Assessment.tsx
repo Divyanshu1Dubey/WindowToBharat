@@ -123,7 +123,7 @@ const Assessment = () => {
     );
 
     const user = JSON.parse(localStorage.getItem("eq-user") || "{}");
-    const scriptUrl = localStorage.getItem("eq-sheet-url") || DEFAULT_GOOGLE_SCRIPT_URL;
+    const scriptUrl = DEFAULT_GOOGLE_SCRIPT_URL;
 
     if (scriptUrl) {
       try {

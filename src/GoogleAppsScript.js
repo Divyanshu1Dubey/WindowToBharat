@@ -68,7 +68,11 @@ function doPost(e) {
       }
       
       // 2. Send Results Email to User (BCC admin)
-      sendResultsEmail(data);
+      try {
+        sendResultsEmail(data);
+      } catch (emailError) {
+        Logger.log("Failed to send results email: " + emailError.toString());
+      }
       
       return ContentService.createTextOutput(JSON.stringify({ 
         status: "success", 
@@ -79,7 +83,11 @@ function doPost(e) {
       
     } else if (type === "contact") {
       // Send Contact Form Email
-      sendContactEmail(data);
+      try {
+        sendContactEmail(data);
+      } catch (emailError) {
+        Logger.log("Failed to send contact email: " + emailError.toString());
+      }
       
       return ContentService.createTextOutput(JSON.stringify({ 
         status: "success", 
@@ -90,7 +98,11 @@ function doPost(e) {
       
     } else if (type === "registration") {
       // Send Registration Form Email
-      sendRegistrationEmail(data);
+      try {
+        sendRegistrationEmail(data);
+      } catch (emailError) {
+        Logger.log("Failed to send registration email: " + emailError.toString());
+      }
       
       return ContentService.createTextOutput(JSON.stringify({ 
         status: "success", 
