@@ -5,7 +5,7 @@ import { results } from "../data/results";
 import { ArrowLeft, RotateCcw, Loader2 } from "lucide-react";
 
 // You can configure your Google Apps Script URL here or set it in the UI settings
-const DEFAULT_GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwEuXD1MiMx_bruXd98V8nMkFEWlSluWXt7CchGooMCXhePEjo57KdOAq03TwN6x7TKUA/exec";
+const DEFAULT_GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby_E3Ee_3QPA8x7_83Fay5TA3FJQVDuqe40kcUtSeqm6K_co2ISmif7Yb-8hL_S2Y3iUw/exec";
 
 const Assessment = () => {
   const navigate = useNavigate();
